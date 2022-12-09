@@ -6,11 +6,11 @@ export type TeamDocument = HydratedDocument<Team>;
 
 @Schema()
 export class Team {
+    @Prop({ default: false , required: true})
+    label: string
+
     @Prop({ type: [PlayerSchema], default: [], required: true })
     players: Player[]
-
-    @Prop({ default: false , required: true})
-    name: string
 
     @Prop({ default: false })
     isWinner: boolean

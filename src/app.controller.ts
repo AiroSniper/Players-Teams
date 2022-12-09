@@ -16,34 +16,24 @@ export class AppController {
     private readonly playersService: PlayersService,
     private readonly teamsService: TeamsService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
-  @MessagePattern({cmd:'palyer-registerd'})
-  async handlePlayerRegistration(data:PlayerRegisteredEvent):Promise<string>{
-    return this.appService.handlePlayerRegistration(data)
-  }
-
-  @MessagePattern({cmd:'create-palyer'})
-  async createPlayer(data:PlayerDTO):Promise<Player>{
+  @MessagePattern({cmd:'add-player'})
+  async addPlayer(data:PlayerDTO):Promise<Player>{
     return this.playersService.create(data)
   }
 
   @MessagePattern({cmd:'all-players'})
-  async findAllPlayers():Promise<Player[]>{
+  async allPlayers():Promise<Player[]>{
     return this.playersService.findAll()
   }
 
   
-  @MessagePattern({cmd:'create-team'})
-  async createTeam(data:TeamDTO):Promise<Team>{
+  @MessagePattern({cmd:'add-team'})
+  async addTeam(data:TeamDTO):Promise<Team>{
     return this.teamsService.create(data)
   }
 
   @MessagePattern({cmd:'all-teams'})
-  async findAllTeams():Promise<Team[]>{
+  async allTeams():Promise<Team[]>{
     return this.teamsService.findAll()
   }
 }

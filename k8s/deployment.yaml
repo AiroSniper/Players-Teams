@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: players
+spec:
+  selector:
+    matchLabels:
+      app: players
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: players
+    spec:
+      containers:
+        - name: players
+          image: mguay/players
+          ports:
+            - containerPort: 3000
